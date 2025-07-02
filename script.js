@@ -80,21 +80,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Navbar background on scroll
     const navbar = document.querySelector('.navbar');
-    let lastScrollTop = 0;
-
     window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        // Add background to navbar when scrolled
-        if (scrollTop > 50) {
-            navbar.style.background = 'rgba(10, 10, 15, 0.9)';
-            navbar.style.backdropFilter = 'blur(20px)';
+        // 50 pixels ထက်ပိုပြီး scroll ဆွဲမှ 'scrolled' class ကိုထည့်ပါ
+        if (window.pageYOffset > 50) {
+            navbar.classList.add('scrolled');
         } else {
-            navbar.style.background = '';
-            navbar.style.backdropFilter = '';
+            navbar.classList.remove('scrolled');
         }
-        
-        lastScrollTop = scrollTop;
     });
 
     // Parallax effect for hero background orbs
