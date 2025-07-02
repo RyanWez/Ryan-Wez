@@ -89,7 +89,16 @@ body {
     max-width: 1200px;
     padding: 1rem 2rem;
     z-index: 1000;
-    transition: all 0.3s ease;
+    border-radius: 16px; /* လေးထောင့်ညီအောင် ထည့်ပါ */
+    border: 1px solid transparent; /* Border ပေါ်လာရင် မတုန်သွားအောင် ထည့်ပါ */
+    transition: background-color 0.4s ease, backdrop-filter 0.4s ease, border 0.4s ease; /* ပြောင်းလဲမှုကို स्मूथ ဖြစ်စေရန် */
+}
+
+.navbar.scrolled {
+    background-color: rgba(20, 20, 32, 0.7); /* အလင်းအနည်းငယ်ဖောက်နိုင်သော နောက်ခံ */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
 }
 
 .nav-container {
@@ -448,7 +457,7 @@ section {
 
 .social-links {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem; /* Icon များကြား အကွာအဝေး ချိန်ညှိရန် */
     justify-content: center;
 }
 
@@ -461,12 +470,25 @@ section {
     font-size: 1.5rem;
     color: var(--text-primary);
     transition: all 0.3s ease;
+    border-radius: 50%; /* Icon ကို စက်ဝိုင်းပုံစံဖြစ်စေရန် */
 }
 
+/* Icon အားလုံးအတွက် ယေဘုယျ Hover Effect */
 .social-link:hover {
     transform: translateY(-5px);
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    color: rgb(250, 250, 250);
+    color: #ffffff; /* Hover တင်သည့်အခါ SVG icon ကို အဖြူရောင်ဖြစ်စေရန် */
+}
+
+/* Facebook Icon အတွက် သီးသန့် Hover Effect */
+.social-link[href*="facebook.com"]:hover {
+    background-color: #1877F2; /* Facebook အပြာရောင် */
+    border-color: transparent; /* ဘောင်ကို ဖျောက်ရန် */
+}
+
+/* Telegram Icon အတွက် သီးသန့် Hover Effect */
+.social-link[href*="t.me"]:hover {
+    background-color: #2AABEE; /* Telegram အပြာရောင် */
+    border-color: transparent; /* ဘောင်ကို ဖျောက်ရန် */
 }
 
 /* Footer */
@@ -542,6 +564,7 @@ section {
 /* Smooth Scrolling */
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* Fixed Navbar အတွက် Offset ထည့်ရန် */
 }
 
 /* Selection Color */
