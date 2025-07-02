@@ -47,6 +47,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    const sections = document.querySelectorAll('section[id]');
+    const navObserverOptions = {
+        rootMargin: '-50% 0px -50% 0px', // screen ရဲ့ အလယ်ကိုရောက်မှ trigger ဖြစ်စေရန်
+        threshold: 0
+    };
+
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    }, navObserverOptions);
+
+    sections.forEach(section => {
+        navObserver.observe(section);
+    });
+
+
     // Intersection Observer for fade-up animations
     const observerOptions = {
         root: null,
@@ -129,10 +155,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Store original HTML and implement typing effect if desired
     // This is commented out but can be enabled for additional effect
-    /*
+    /* 
     heroTitle.innerHTML = '';
     let i = 0;
-    
+
     function typeWriter() {
         if (i < originalText.length) {
             heroTitle.innerHTML = originalText.slice(0, i + 1);
@@ -140,10 +166,15 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(typeWriter, 50);
         }
     }
-    
+
     // Start typing after preloader
     setTimeout(typeWriter, 1000);
     */
+
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
 });
 
 // Add smooth scroll behavior for mouse wheel
