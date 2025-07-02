@@ -149,6 +149,14 @@ body {
     width: 100%;
 }
 
+.nav-link.active {
+    color: var(--text-primary); /* Active ဖြစ်နေသော link ကို ပိုဖြူအောင်လုပ်ခြင်း */
+}
+
+.nav-link.active::after {
+    width: 100%; /* Active ဖြစ်နေသော link အောက်တွင် መስመርသားရန် */
+}
+
 /* Hamburger Menu */
 .hamburger {
     display: none;
