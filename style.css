@@ -85,7 +85,7 @@ body {
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%;
+    width: 75%;
     max-width: 1200px;
     padding: 1rem 2rem;
     z-index: 1000;
@@ -108,12 +108,15 @@ body {
 }
 
 .nav-brand {
-    font-size: 1.5rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    /* Logo ကို နှိပ်လို့ရအောင် display ပြောင်းပြီး အလယ်မှာထားရန် */
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Link ရဲ့ အောက်ကမျဉ်းကို ဖျောက်ရန် */
+}
+
+.logo-img {
+    height: 38px; /* Logo အမြင့်ကို လိုသလို ချိန်ညှိနိုင်ပါသည် */
+    width: auto;  /* အမြင့်အလိုက် အကျယ်ကို အလိုအလျောက် ချိန်ညှိရန် */
 }
 
 .nav-menu {
@@ -523,19 +526,27 @@ section {
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
-        left: -100%;
-        top: 70px;
+        top: 80px; /* Navbar အောက်နားကနေ စပေါ်ရန် */
+        left: 5vw; /* ဘယ်ညာ 5% စီချန်ပြီး အလယ်ရောက်စေရန် */
+        width: 90%; /* Navbar ရဲ့ အကျယ်အတိုင်း 90% ဖြစ်စေရန် */
+        
         flex-direction: column;
         background-color: var(--bg-secondary);
-        width: 100%;
         text-align: center;
-        transition: 0.3s;
         padding: 2rem 0;
-        border-radius: 0 0 16px 16px;
+        border-radius: 16px; /* ထောင့်အားလုံးကို ဝိုင်းစက်စေရန် */
+
+        /* Animation အတွက် ပြင်ဆင်ခြင်း */
+        opacity: 0;
+        transform: scale(0.95) translateY(-10px);
+        transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+        pointer-events: none; /* မမြင်ရချိန်တွင် နှိပ်မရစေရန် */
     }
 
     .nav-menu.active {
-        left: 0;
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        pointer-events: auto; /* မြင်ရချိန်တွင် နှိပ်လို့ရစေရန် */
     }
 
     .hamburger {
