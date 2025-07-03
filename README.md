@@ -1,7 +1,8 @@
 # RyanWez - Personal Portfolio Website
 ---
 
-![RyanWez Portfolio Screenshot](https://github.com/user-attachments/assets/9f901e51-f55a-4261-98c7-5a82d5bd68c6)
+![RyanWez Screenshot](https://github.com/user-attachments/assets/1dbb41d0-b563-4357-9964-64d4f4184152)
+
 
 
 
